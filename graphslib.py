@@ -183,6 +183,42 @@ class WeightedGraph(Graph):
         visited.reverse()
         return dijkstra[end][0], visited
 
+
+    def dijkstra(self, start, end):
+        start, end = super().nodeFromName(start), super().nodeFromName(end)  # Get Nodes from Node Names
+
+        dijkstra = {x: [float('inf'), x] for x in self.nodes}  # Create dict of all nodes with their
+        dijkstra[start] = [0, start]  # distance from start and previous node
+        visited = []  # Create list of visited nodes
+
+        def nextNode():
+            tempDist = float('inf')
+            tempNode = None
+            for j in dijkstra:
+                if j not in visited and dijkstra[j][0] < tempDist:
+                    tempNode = j
+                    tempDist = dijkstra[j][0]
+            return tempNode
+
+        curr = start
+        while curr is not None:
+            for i in curr.children:
+                if dijkstra[curr][0] + i.weight <= dijkstra[i.child][0]:
+                    dijkstra[i.child][0] = dijkstra[curr][0] + i.weight
+                    dijkstra[i.child][1] = curr
+            visited.append(curr)
+            curr = nextNode()
+
+        visited = []
+        curr = end
+        while curr != start:
+            visited.append(curr)
+            curr = dijkstra[curr][1]
+        visited.append(start)
+        visited.reverse()
+        return dijkstra[end][0], visited
+
+
     def kruskal(self):
 
         vert = self.vertices
