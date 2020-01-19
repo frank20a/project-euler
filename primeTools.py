@@ -36,6 +36,12 @@ def nextPrime(t) -> int:
     return t
 
 
+def prevPrime(t) -> int:
+    t -= 1
+    while not isPrime(t): t -= 1
+    return t
+
+
 def primeSpace(x = 0, y = 3) -> list:
     if x < 0: x = 0
 
