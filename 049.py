@@ -1,7 +1,7 @@
-import primeTools as pt
+import tools as pt
 from itertools import permutations, combinations
 
-A = pt.primeSpace(1000, 10000)
+A = pt.prime_space(1000, 10000)
 
 
 def checkDist(L):
@@ -15,7 +15,7 @@ for i in A:
     t = []
     for j in permutations(str(i)):
         k = int(''.join(j))
-        if k > 1000 and pt.isPrime(k) and k not in t:
+        if k > 1000 and pt.is_prime(k) and k not in t:
             c += 1
             t.append(k)
     if c >= 3:

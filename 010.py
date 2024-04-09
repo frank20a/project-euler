@@ -1,3 +1,3 @@
-import primeTools as pt
+import tools as pt
 
-print(sum(pt.primeSpace(1, 2000000)))
+print(sum(pt.prime_space(1, 2000000)))

@@ -1,4 +1,4 @@
-from primeTools import prevPrime
+from tools import prev_prime
 
 
 def isPandigital(x):
@@ -12,5 +12,5 @@ def isPandigital(x):
 # pandigital numbers with 9 and 8 digits are divisible by 3 and such are not prime so the largest pandigital prime
 # can at most have 7 digits
 t = 7654321
-while not isPandigital(t): t = prevPrime(t)
+while not isPandigital(t): t = prev_prime(t)
 print(t)

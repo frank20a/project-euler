@@ -1,3 +1,3 @@
-from primeTools import nPrimes
+from tools import primes
 
-print(nPrimes(10001)[-1])
+print(primes(10001)[-1])

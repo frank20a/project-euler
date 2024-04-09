@@ -1,4 +1,4 @@
-from primeTools import isPrime
+from tools import is_prime
 
 
 def quad(a, b, n):
@@ -7,7 +7,7 @@ def quad(a, b, n):
 
 def maxN(a, b):
     n = 0
-    while isPrime(quad(a, b, n)): n += 1
+    while is_prime(quad(a, b, n)): n += 1
     return n
 
 
