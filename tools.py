@@ -24,6 +24,11 @@ def is_prime(n) -> bool:  # A quick O(n*sqrt(n)) implementation of isPrime
 
 
 def primes(n) -> list:
+    if n == 1:
+        return [2]
+    if n == 2:
+        return [2, 3]
+    
     t = [2, 3]
     i = 1
 
@@ -31,11 +36,24 @@ def primes(n) -> list:
         # All primes have a 6n+-1 form except 2 and 3
         if is_prime(6 * i - 1):
             t.append(6 * i - 1)
-        if is_prime(6 * i + 1):
+        if is_prime(6 * i + 1) and len(t) < n:
             t.append(6 * i + 1)
         i += 1
 
     return t
+
+
+def prime_gen():
+    yield 2
+    yield 3
+
+    i = 1
+    while True:
+        if is_prime(6 * i - 1):
+            yield 6 * i - 1
+        if is_prime(6 * i + 1):
+            yield 6 * i + 1
+        i += 1
 
 
 def next_prime(t) -> int:
